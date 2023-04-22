@@ -1,91 +1,136 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>DIG FDN16 Yoshihito Iwahori</title>
+    <meta name="description" content="テキストテキストテキストテキストテキストテキストテキストテキスト">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/DCFT.ico">
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
 
- <head>
-　<!-- Firebaseライブラリを読み込む バージョンは2.3.2という古いのを使っています -->
-  <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+  <body>
+    <header id="header">
+      <!-- <h1 class="site-title"><a href="index.html"><img src="img/prezen.png" alt="課題発表"></a></h1> -->
+      <h1>Presentation</h1>
+      <nav>
+        <ul>
+          <li><a href="#about">self-introduction</a></li>
+          <li><a href="#news">impression</a></li>
+          <li><a href="#works">Works</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <!-- <li>
+            <a href="https://www.instagram.com/" target="_blank">
+              <img class="icon" src="./img/icon-instagram.png" alt="インスタグラム">
+            </a>
+          </li> -->
+        </ul>
+      </nav>
+    </header>
 
-  <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="chat.js"></script>
+    <main>
+      <div id="mainvisual">
+        <picture>
+          <source media="(max-width: 600px)" srcset="img/mainvisual-sp.jpg">
+          <img src="img/matrix.gif" alt="テキストテキストテキスト">
+        </picture>
+      </div>
 
-  <!-- ↓ 先ほど入手したコード　↓ -->
-  <!-- <script src="https://www.gstatic.com/firebasejs/3.7.8/firebase-app.js"></script>
-  <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "各自",
-        authDomain: "各自",
-        databaseURL: "https://各自",
-        storageBucket: "各自",
-        messagingSenderId: "各自"
-      };
-      firebase.initializeApp(config);
-  </script> -->
-  <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-analytics.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
+      <section id="about" class="wrapper">
+        <h2 class="sec-title">self-introduction</h2>
+        <ul>
+          <li>岩堀 嘉仁</li>
+          <li>車両技術開発部　技能系総括係　D-CFT</li>
+          <li>愛知県知立市出身</li>
+          <li>ライフワーク　資格取得</li>
+          <li>ロケーション　本社　技術第7工場</li>
+        </ul>
+        <img class="icon" src="./img/iwahori.png">
+        <p>
+          皆様、今日までありがとうございました。ほぼ素人の私がこの様な簡単なHPを作れるようになりました。
+          これも講師の皆様、16期生メンバーの皆様の支えがあっての賜物です。
+          本社 技術第7工場付近へお越しの際は、是非お立ち寄りください。コーヒーを用意して待っています。
+        </p>
+      </section>
+
+      <section id="news" class="wrapper">
+        <h2 class="sec-title">impression</h2>
+        <dl>
+          <dt>2023.4.26</dt>
+          <dd>【DAY20】デザイン雑誌「ＸＸＸＸＸＸ Vol.11』に掲載していただきました。</dd>
+          <dt>2023.4.25</dt>
+          <dd>【DAY19】ＸＸ月ＸＸ日から写真集「ＸＸＸＸＸＸＸ」の販売を開始します。</dd>
+          <dt>2023.4.24</dt>
+          <dd>【DAY18】テキストテキストテキストテキストテキストテキストテキスト</dd>
+          <dt>2023.4.21</dt>
+          <dd>【DAY17】PTA総会の為、欠席。自習で高階関数入門とポケモンプロジェクトを実施。</dd>
+          <dt>2023.4.20</dt>
+          <dd>【DAY16】JavaScriptライブラリを学ぶ。ワニが出たときは超絶の喜びを感じた。</dd>
+          <dt>2023.4.19</dt>
+          <dd>【DAY15】CSSとJavaScript、DOMイベントを学ぶ。</dd>
+          <dt>2023.4.18</dt>
+          <dd>【DAY14】メソッド、DOMを学ぶ。HTMLとJavaScriptがつながってきた！</dd>
+          <dt>2023.4.17</dt>
+          <dd>【DAY13】クロージャを学ぶ。アセスメント＃２は散々！再提出！完全に勉強不足と思い知る。猛省。</dd>
+          <dt>2023.4.14</dt>
+          <dd>【DAY12】値としての関数。関数を値とする？確かに便利。</dd>
+          <dt>2023.4.13</dt>
+          <dd>【DAY11】whileやforループを学ぶ。これは使える！</dd>
+          <dt>2023.4.12</dt>
+          <dd>【DAY10】for-inループはオブジェクト？？ofは配列だったっけ？参照渡しも難しい！</dd>
+          <dt>2023.4.11</dt>
+          <dd>【DAY9】オブジェクト、スコープについて学ぶ。ドット記法、ブラケット記法？？新たな単語が多い。</dd>
+          <dt>2023.4.10</dt>
+          <dd>【DAY8】for-ofループを学ぶ。HTMLとCSSの関係を学ぶ。エンジニアっぽくなってきた。</dd>
+          <dt>2023.4.7</dt>
+          <dd>【DAY7】配列の取り扱いを学ぶ。エラーは友達！！！アセスメント＃１は何とかクリア！</dd>
+          <dt>2023.4.6</dt>
+          <dd>【DAY6】PTA業務の為年休。ChatGPTに書いてもらった祝辞を読む！条件分岐を自習。</dd>
+          <dt>2023.4.5</dt>
+          <dd>【DAY5】テスト駆動開発を学ぶ。コードの臭い？？？</dd>
+          <dt>2023.4.4</dt>
+          <dd>【DAY4】条件分岐の門を叩く。ショートカットキーを使えるとかっこいい！</dd>
+          <dt>2023.4.3</dt>
+          <dd>【DAY3】HTMLを学ぶ。私はインポスター症候群では無いと思われる。</dd>
+          <dt>2023.3.31</dt>
+          <dd>【DAY2】関数を学ぶ。「ドライバーやります！」</dd>
+          <dt>2023.3.30</dt>
+          <dd>【DAY1】console.log,const,letとの出会い。mizkiのイケメンぶりに驚く</dd>
+        </dl>
+      </section>
+
+      <section id="works" class="wrapper">
+        <h2 class="sec-title">Works</h2>
+        <ul>
+          <li>先日、部の相談員より「匿名でチャットできるような方法ない？」といった相談がありました。リアルタイムチャットを作ってみました。</li>
+        </ul>
+        <ul>
+          <li><img src="img/chat.gif" alt="テキストテキストテキスト"></li>
+          <!-- <li><img src="img/works2.jpg" alt="テキストテキストテキスト"></li>
+          <li><img src="img/works3.jpg" alt="テキストテキストテキスト"></li>
+          <li><img src="img/works4.jpg" alt="テキストテキストテキスト"></li>
+          <li><img src="img/works5.jpg" alt="テキストテキストテキスト"></li>
+          <li><img src="img/works6.jpg" alt="テキストテキストテキスト"></li> -->
+        </ul>
+      </section>
   
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-      apiKey: "AIzaSyC_dhJNXvme2tbJrpN8fhYiO_5fMGeBSsk",
-      authDomain: "iwahori-dcft.firebaseapp.com",
-      projectId: "iwahori-dcft",
-      storageBucket: "iwahori-dcft.appspot.com",
-      messagingSenderId: "786291535337",
-      appId: "1:786291535337:web:943df9024573caa244af78",
-      measurementId: "G-DEML70WMDT"
-    };
-  
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-  </script>
-  
-  <!-- ↑ 先ほど入手したコード ↑ -->
+      <section id="contact" class="wrapper">
+          <div class="button"><a href="https://iwahori-dcft.firebaseapp.com/" target="_blank"><input type="submit" value="匿名Chatへ"></a></div>
+      </section>
 
-  <!-- ↓ 少ないのでcssベタ張り ↓ -->
-  <style>
-    ul > li:first-child {
-     color: black;
-     font-size: 25px;
-    }
-    ul > li:nth-child(2n) {
-     color: blue;
-    }
-    ul > li:nth-child(2n):before {
-     content:"ユーザー名："
-    }
-  </style>
-  <!-- ↑ 少ないのでcssベタ張り ↑ -->
 
- </head>
 
- <body>
+      <section id="contact" class="wrapper">
+        <h2 class="sec-title">Contact</h2>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScEPY8IAzj5udxEsL0UYuz7D2CIgMg0OGNBpRD1Iwso0KGQUw/viewform?embedded=true" width="640" height="1200" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
+      </section>
+    </main>
+    <footer id="footer">
+      <p>&copy; 2023 DIG FDN16 Yoshihito Iwahori</p>
+    </footer>
+    
 
-  <div>
-   <!-- 投稿者 -->
-   <div>
-    <p>ユーザ名</p>
-    <textarea name="" id="jsi-name" cols="10" rows="1"></textarea>
-   </div>
+  </body>
 
-   <!-- メッセージを打ち込む部分 -->
-   <div>
-    <p>内容</p>
-    <textarea name="" id="jsi-msg" cols="30" rows="4"></textarea>
-   </div>
-  </div>
-
-  <!-- メッセージを送る部分 -->
-  <button name="button" id="jsi-button">send message!</button>
-
-  <!-- チャット内容が動的に生成される部分 -->
-  <ul id="jsi-board" style="list-style:none;">
-    <li>〜チャット内容〜</li>
-  </ul>
- </body>
 </html>
