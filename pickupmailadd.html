@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Email Addresses</title>
+  <link rel="icon" href="DCFT.ico">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f8f8;
+      color: #333;
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      background-color: #4caf50;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    #output {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  </style>
+  <script>
+    function extractEmailAddresses() {
+      var input = document.getElementById('input').value;
+      var regex = /<([^>]+)>/g;
+      var matches = input.match(regex);
+      var emailAddresses = matches.map(function(match) {
+        return match.slice(1, -1);
+      });
+
+      var output = document.getElementById('output');
+      output.innerHTML = emailAddresses.join('<br>');
+
+      var copyButton = document.getElementById('copyButton');
+      copyButton.dataset.clipboardText = emailAddresses.join(',');
+      copyButton.disabled = false;
+    }
+
+    function copyEmailAddresses() {
+      var copyButton = document.getElementById('copyButton');
+      var textToCopy = copyButton.dataset.clipboardText;
+
+      navigator.clipboard.writeText(textToCopy).then(function() {
+        alert('メールアドレスがコピーされました。');
+      }, function(err) {
+        alert('メールアドレスのコピーに失敗しました。');
+        console.error('Error copying email addresses: ', err);
+      });
+    }
+  </script>
+</head>
+<body>
+  <h1>Email Addresses</h1>
+  <textarea id="input" rows="4" cols="50"></textarea>
+  <br>
+  <button onclick="extractEmailAddresses()">Extract Email Addresses</button>
+  <br>
+  <h2>Output:</h2>
+  <button id="copyButton" onclick="copyEmailAddresses()" disabled>Copy Email Addresses</button>
+  <div id="output"></div>
+  <br>
+ 
+</body>
+</html>
