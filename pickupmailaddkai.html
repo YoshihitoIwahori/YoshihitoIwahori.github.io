@@ -2,6 +2,46 @@
 <html>
 <head>
   <title>Email Addresses</title>
+  <link rel="icon" href="DCFT.ico">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f8f8;
+      color: #333;
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      background-color: #4caf50;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    #output {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  </style>
   <script>
     function extractEmailAddresses() {
       var input = document.getElementById('input').value;
@@ -14,14 +54,14 @@
       var output = document.getElementById('output');
       output.innerHTML = emailAddresses.join('<br>');
 
-      var copyButton = document.getElementById('copyButton');
-      copyButton.dataset.clipboardText = emailAddresses.join(',');
-      copyButton.disabled = false;
+      var copyEmailButton = document.getElementById('copyEmailButton');
+      copyEmailButton.dataset.clipboardText = emailAddresses.join(',');
+      copyEmailButton.disabled = false;
     }
 
     function copyEmailAddresses() {
-      var copyButton = document.getElementById('copyButton');
-      var textToCopy = copyButton.dataset.clipboardText;
+      var copyEmailButton = document.getElementById('copyEmailButton');
+      var textToCopy = copyEmailButton.dataset.clipboardText;
 
       navigator.clipboard.writeText(textToCopy).then(function() {
         alert('メールアドレスがコピーされました。');
@@ -30,18 +70,49 @@
         console.error('Error copying email addresses: ', err);
       });
     }
+
+    function extractNames() {
+      var emailAddresses = document.getElementById('input').value;
+      var regex = /\/([^<]+) </g;
+      var matches = emailAddresses.matchAll(regex);
+      var names = [];
+      for (var match of matches) {
+        var name = match[1].trim();
+        if (name.includes('/')) {
+          name = name.substring(0, name.indexOf('/')).trim();
+        }
+        names.push(name);
+      }
+
+      var output = document.getElementById('output');
+      output.innerHTML = names.join('<br>');
+
+      var copyNamesButton = document.getElementById('copyNamesButton');
+      copyNamesButton.setAttribute('data-clipboard-text', names.join('\n'));
+      copyNamesButton.disabled = false;
+    }
+
+    function copyNames() {
+      var copyNamesButton = document.getElementById('copyNamesButton');
+      copyNamesButton.select();
+      document.execCommand('copy');
+      alert('氏名がコピーされました！');
+    }
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
 </head>
 <body>
   <h1>Email Addresses</h1>
-  <textarea id="input" rows="4" cols="50">Takahama, Shouma/高浜 将馬 &lt;shouma_takahama@mail.toyota.co.jp&gt;; IWAHORI 岩堀 嘉仁 &lt;yoshihito_iwahori@mail.toyota.co.jp&gt;; 高橋 高橋 陽一 &lt;yoichi_takahashi_ab@mail.toyota.co.jp&gt;</textarea>
+  <textarea id="input" rows="4" cols="50"></textarea>
   <br>
   <button onclick="extractEmailAddresses()">Extract Email Addresses</button>
+  <button onclick="extractNames()">Extract Names</button>
   <br>
   <h2>Output:</h2>
-  <button id="copyButton" onclick="copyEmailAddresses()" disabled>Copy Email Addresses</button>
+  <button id="copyEmailButton" onclick="copyEmailAddresses()" disabled>Copy Email Addresses</button>
+  <button id="copyNamesButton" data-clipboard-target="#output" onclick="copyNames()" disabled>Copy Names</button>
   <div id="output"></div>
   <br>
-  
+ 
 </body>
 </html>
