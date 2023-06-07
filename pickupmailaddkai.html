@@ -88,31 +88,48 @@
       output.innerHTML = names.join('<br>');
 
       var copyNamesButton = document.getElementById('copyNamesButton');
-      copyNamesButton.setAttribute('data-clipboard-text', names.join('\n'));
+      copyNamesButton.dataset.clipboardText = names.join('\n');
       copyNamesButton.disabled = false;
     }
 
     function copyNames() {
       var copyNamesButton = document.getElementById('copyNamesButton');
-      copyNamesButton.select();
-      document.execCommand('copy');
-      alert('氏名がコピーされました！');
+      var textToCopy = copyNamesButton.dataset.clipboardText;
+
+      navigator.clipboard.writeText(textToCopy).then(function() {
+        alert('氏名がコピーされました！');
+      }, function(err) {
+        alert('氏名のコピーに失敗しました。');
+        console.error('Error copying names: ', err);
+      });
     }
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-</head>
-<body>
-  <h1>Email Addresses</h1>
-  <textarea id="input" rows="4" cols="50"></textarea>
-  <br>
-  <button onclick="extractEmailAddresses()">Extract Email Addresses</button>
-  <button onclick="extractNames()">Extract Names</button>
-  <br>
-  <h2>Output:</h2>
-  <button id="copyEmailButton" onclick="copyEmailAddresses()" disabled>Copy Email Addresses</button>
-  <button id="copyNamesButton" data-clipboard-target="#output" onclick="copyNames()" disabled>Copy Names</button>
-  <div id="output"></div>
-  <br>
- 
-</body>
-</html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var clipboard = new ClipboardJS('#copyNamesButton');
+        clipboard.on('success', function(e) {
+          alert('氏名がコピーされました！');
+        });
+        clipboard.on('error', function(e) {
+          alert('氏名のコピーに失敗しました。');
+          console.error('Error copying names: ', e);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Email Addresses</h1>
+    <textarea id="input" rows="4" cols="50"></textarea>
+    <br>
+    <button onclick="extractEmailAddresses()">Extract Email Addresses</button>
+    <button onclick="extractNames()">Extract Names</button>
+    <br>
+    <h2>Output:</h2>
+    <button id="copyEmailButton" onclick="copyEmailAddresses()" disabled>Copy Email Addresses</button>
+    <button id="copyNamesButton" data-clipboard-target="#output" disabled>Copy Names</button>
+    <div id="output"></div>
+    <br>
+  </body>
+  </html>
+  
