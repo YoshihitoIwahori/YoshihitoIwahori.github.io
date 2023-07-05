@@ -103,6 +103,9 @@
         console.error('Error copying names: ', err);
       });
     }
+    function clearInput() {
+      document.getElementById('input').value = '';
+    }    
   </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script>
@@ -124,6 +127,7 @@
     <br>
     <button onclick="extractEmailAddresses()">Extract Email Addresses</button>
     <button onclick="extractNames()">Extract Names</button>
+    <button onclick="clearInput()">Clear Input</button>
     <br>
     <h2>Output:</h2>
     <button id="copyEmailButton" onclick="copyEmailAddresses()" disabled>Copy Email Addresses</button>
